@@ -1,0 +1,10 @@
+ticker,last,date,sigma,vs_sma200,pos_in_52w_range,resid_weak_O1,O2_initial_stop_pct,gap_event_last_21d,gap_fail_signal_last_63d
+AAOI,53.49,2026-11-11,1.41,-0.53,0.17,True,-0.91,2026-11-05,False
+NOW,101.11,2026-11-11,0.67,-0.11,0.2,False,-0.68,2026-10-29,False
+OSCR,32.84,2026-11-11,0.64,0.35,0.9,False,-0.67,,False
+ASTS,35.11,2026-11-11,1.1,-0.53,0.05,True,-0.85,2026-11-05,False
+AMZN,268.93,2026-11-11,0.33,0.1,0.82,False,-0.44,,False
+GOOG,288.61,2026-11-11,0.33,-0.14,0.13,True,-0.44,2026-10-29,False
+ADUR,10.63,2026-11-11,0.78,-0.17,0.19,True,-0.74,,False
+TE,2.19,2026-11-11,1.21,-0.63,0.01,True,-0.88,2026-11-05,False
+AMPG,2.59,2026-11-11,1.12,-0.31,0.1,True,-0.86,,True

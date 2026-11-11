@@ -153,8 +153,9 @@ if __name__ == "__main__":
         run_set("holdout", 1500, "US", np.arange(ic - T + 1, last + 1))
         run_set("w2021dec", 300, "US", [loc("2021-12-01")])
         # the client's actual book, as if inherited 756 trading days ago at today's weights
-        names = ["AAOI", "NOW", "OSCR", "ASTS", "AMZN", "GOOG", "ADUR", "TE", "AMPG"]
+        # Aduro (ADUR) has no Yahoo history before Aug 2024, so it is left out (4.4% weight) and
+        # the other eight weights are rescaled.
+        names = ["AAOI", "NOW", "OSCR", "ASTS", "AMZN", "GOOG", "TE", "AMPG"]
+        wts = np.array([.198, .194, .192, .129, .110, .096, .024, .013]); wts = wts / wts.sum()
         cols = list(D["px"].columns)
-        avail = [(cols.index(t if t in cols else "ACT.CN"), wt) for t, wt in zip(names, E.W)]
-        fixed = [a for a, _ in avail]
-        run_set("actual", 1, "US", [last], fixed=fixed, w=E.W)
+        run_set("actual", 1, "US", [last], fixed=[cols.index(t) for t in names], w=wts)
