@@ -117,8 +117,9 @@ def instants(rows, t=None, shares=False):
 
 def asof(df, dates, cols, pre):
     """latest filed row on each date -> columns prefixed with pre"""
-    x = df.sort_values("known")[["known", "end"] + cols]
-    m = pd.merge_asof(pd.DataFrame({"date": dates}), x, left_on="date", right_on="known")
+    x = df.sort_values("known")[["known", "end"] + cols].copy()
+    x["known"] = pd.to_datetime(x.known).astype("datetime64[ns]")
+    m = pd.merge_asof(pd.DataFrame({"date": pd.DatetimeIndex(dates).astype("datetime64[ns]")}), x, left_on="date", right_on="known")
     m = m.rename(columns={c: pre + c for c in ["end"] + cols}).drop(columns=["known"])
     return m.set_index("date")
 
